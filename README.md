@@ -1,3 +1,79 @@
+# README (English)
+
+# File_Manager
+The `File_Manager` is a C++ application with a graphical user interface (GUI) created with Qt Design, allowing users to monitor changes in a directory, such as the addition, deletion, modification, and renaming of files and folders. The application displays this information and allows data export to CSV and TXT files, as well as storing a history of changes in an SQLite database.
+
+## Features
+
+- **Directory Selection**: Choose a directory to monitor.
+- **Directory Analysis**: Analyzes changes (added, modified, renamed, and deleted files).
+- **Data Export**: Exports change information to CSV or TXT files.
+- **Data Clearing**: Clears the current change history.
+
+## Documentation for DirectoryAnalyzer.cpp and DirectoryAnalyzer.h
+
+**Overview:**
+
+This code implements a graphical interface to analyze directories and export changes (creation, modification, and deletion of files/directories) to CSV or TXT files. The program uses an SQLite database to store information on changes.
+
+**Components:**
+
+* **DirectoryAnalyzer.cpp:** Implements the main application logic, including the user interface (Qt), database management (SQLite), and functions to analyze directories and export data.
+* **DirectoryAnalyzer.h:** Defines the `DirectoryAnalyzer` class and its public and private methods.
+
+**Classes:**
+
+* **DirectoryAnalyzer:**
+    * This class is responsible for all the functionality of the application.
+    * It manages the graphical interface (Qt), SQLite database, and directory analysis and data export operations.
+
+**Functions:**
+
+* **initUI():** Initializes the graphical interface with labels, buttons, and a table to display changes.
+* **create_button(const QString &text):** Creates a custom button with specified size and font.
+* **init_db():** Connects to the SQLite database and creates the `changes` table (if it does not exist).
+* **select_directory():** Opens a dialog to select a directory and updates the internal state.
+* **scan_directory(const QString &directory):** Scans a directory and returns a map containing information about files and directories.
+* **analyze_directory():** Analyzes the selected directory, checks for changes, and records them in the database.
+* **load_db_content():** Loads data from the database and displays it in the table.
+* **export_to_csv():** Exports changes to a CSV file.
+* **export_to_txt():** Exports changes to a TXT file.
+* **clear_data():** Clears the table and the database.
+* **format_time(qint64 timestamp):** Formats a timestamp to the format "yyyy-MM-dd HH:mm:ss".
+
+**Notes:**
+
+* The commented code `//export_to_xlsx()` indicates a disabled feature for exporting data to Excel (likely due to the absence of the `libxl` library).
+* Paths for the database and icons are directly set in the code and can be modified as needed.
+
+## Documentation for File_Manager.cpp and CMakeLists.txt
+
+**File_Manager.cpp:**
+
+* This file is the entry point of the application.
+* It creates an instance of the `DirectoryAnalyzer` class and displays it on the screen.
+
+**CMakeLists.txt:**
+
+* Defines the project as `File_Manager`.
+* Sets the C++ standard to 17.
+* Finds the Qt6 library with Core, Gui, Widgets, and Sql components.
+* Enables the Qt automatic code generation (MOC).
+* **Commented:** Sets the installation directory for the `libxl` library (needed for Excel export, but not used in the current code).
+* Includes the header directory of `libxl` (only if used).
+* Sets the path to the installed Qt.
+* Defines the main executable (`File_Manager`) and compiles the source files.
+* Links Qt libraries and, optionally, the `libxl` library (if used).
+* Defines Windows-specific compilation flags.
+
+## Final Considerations
+
+This documentation provides an overview of the code and explains the functionality of the main classes and functions. For more detailed documentation, it would be helpful to include explanatory comments within the source code, especially for complex functions or critical sections.
+
+
+
+# README (Portuguese)
+
 # File_Manager
  O `File_Manager` é uma aplicação em C++ com interface gráfica (GUI) criada com Qt Desing, que permite ao usuário monitorar alterações em um diretório, como adição, exclusão, modificação e renomeação de arquivos e pastas. O aplicativo exibe essas informações e permite exportar os dados para arquivos CSV e TXT, além de armazenar um histórico das alterações em um banco de dados SQLite.
 
