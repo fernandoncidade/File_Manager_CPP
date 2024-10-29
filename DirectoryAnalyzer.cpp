@@ -27,7 +27,7 @@ DirectoryAnalyzer::DirectoryAnalyzer(QWidget *parent) : QWidget(parent) {
 void DirectoryAnalyzer::initUI() {
         setWindowTitle("Analisador de Diretórios");
         setWindowIcon(QIcon("icones/manager_files1.png"));
-        setGeometry(100, 100, 800, 400);
+        setGeometry(100, 100, 1000, 500);
 
         QHBoxLayout *layout = new QHBoxLayout(this);
 
